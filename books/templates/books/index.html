@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="{% static 'books/styles/base.css' %}">
+    <link rel="stylesheet" href="{% static 'books/styles/all-books.css' %}">
+
+</head>
+<body>
+    <header id="main-header">
+        <nav><a href="/books" id="main-logo">Books</a></nav>
+        <h1>We have a lot of great books in our library</h1>
+        <p>Choose the book that you like</p>
+    </header>
+    <main>
+        <section>
+            <h2>Books</h2>
+            <ol>
+                {% for book in books %}
+                <li class="book-item">
+                    <article>
+                        <div class="book-summary">
+                            <div class="book-image">
+                                <img src="{{ book.coverImage }}" alt="">
+                            </div>
+                            <div class="book-details">
+                                <h3>{{ book.title }}</h3>
+                                <p>{{ book.author }}</p>
+                            </div>
+                        </div>
+                        <div class="book-actions">
+                            <a href="{{ book.slug }}" class="btn">More Details</a>
+                        </div>
+                    </article>
+                </li>
+                {% endfor %}
+            </ol>
+        </section>
+    </main>
+</body>
+</html>
